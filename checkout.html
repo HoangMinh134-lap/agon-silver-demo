@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111111">
+    <meta name="description" content="Hoàn tất đơn hàng trang sức bạc AGON.">
+    <title>Thanh toán — AGON</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="i18n.js" defer></script>
+    <script src="cart.js" defer></script>
+    <script src="checkout.js" defer></script>
+  </head>
+  <body>
+    <div class="announcement">MIỄN PHÍ VẬN CHUYỂN CHO ĐƠN HÀNG TRÊN 2.000.000₫ <span>—</span> CHẾ TÁC THỦ CÔNG TẠI VIỆT NAM</div>
+    <header class="site-header">
+      <a class="wordmark" href="index.html" aria-label="AGON — Trang chủ"><img class="wordmark-mark" src="assets/agon-mark.png" alt=""><span class="wordmark-label">AGON<small>STERLING ARCHITECTURE</small></span></a>
+      <button class="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button>
+      <nav class="main-nav" aria-label="Điều hướng chính">
+        <a href="index.html#collections">BỘ SƯU TẬP</a><a href="index.html#rings-heading">NHẪN BẠC</a><a href="index.html#chains-heading">DÂY CHUYỀN</a><a href="index.html#bracelets-heading">VÒNG TAY</a>
+      </nav>
+      <div class="header-actions">
+        <button class="language-toggle" type="button" aria-label="Switch language">EN</button>
+        <a class="icon-button bag-button" href="checkout.html" aria-label="Túi hàng">♧<span class="bag-count">0</span></a>
+      </div>
+    </header>
+
+    <main class="checkout-main page-width">
+      <div class="breadcrumbs"><a href="index.html">TRANG CHỦ</a><span>/</span><span>THANH TOÁN</span></div>
+      <div class="checkout-heading">
+        <div class="section-kicker">AGON ARCHIVE / SECURE CHECKOUT</div>
+        <h1>HOÀN TẤT ĐƠN HÀNG</h1>
+        <p>Thông tin giao hàng và tóm tắt các tạo tác trong giỏ.</p>
+      </div>
+
+      <div class="checkout-grid" id="checkout-grid">
+        <form class="checkout-form" id="checkout-form">
+          <section class="checkout-panel">
+            <div class="checkout-step"><span>01</span><h2>THÔNG TIN GIAO HÀNG</h2></div>
+            <div class="checkout-fields">
+              <label>Họ và tên<input name="name" autocomplete="name" placeholder="Nguyễn Văn A" required></label>
+              <div class="checkout-field-row">
+                <label>Số điện thoại<input name="phone" type="tel" autocomplete="tel" placeholder="09xx xxx xxx" required></label>
+                <label>Email<input name="email" type="email" autocomplete="email" placeholder="email@example.com" required></label>
+              </div>
+              <label>Địa chỉ nhận hàng<input name="address" autocomplete="street-address" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành" required></label>
+              <label>Ghi chú đơn hàng <span>(không bắt buộc)</span><textarea name="note" rows="3" placeholder="Lưu ý khi giao hàng"></textarea></label>
+            </div>
+          </section>
+
+          <section class="checkout-panel">
+            <div class="checkout-step"><span>02</span><h2>PHƯƠNG THỨC THANH TOÁN</h2></div>
+            <label class="payment-option"><input type="radio" name="payment" value="cod" checked><span><strong>Thanh toán khi nhận hàng (COD)</strong><small>Thanh toán trực tiếp khi nhận sản phẩm.</small></span></label>
+            <label class="payment-option"><input type="radio" name="payment" value="bank"><span><strong>Chuyển khoản ngân hàng</strong><small>Thông tin chuyển khoản sẽ được xác nhận bởi AGON.</small></span></label>
+          </section>
+          <p class="checkout-demo-note">Bản xem thử: trang này chưa kết nối hệ thống đặt hàng hoặc cổng thanh toán thực tế.</p>
+          <button class="checkout-submit" type="submit">XÁC NHẬN ĐẶT HÀNG · BẢN THỬ&nbsp; ↗</button>
+          <p class="checkout-message" role="status" aria-live="polite"></p>
+        </form>
+
+        <aside class="checkout-panel order-panel">
+          <div class="checkout-step"><span>03</span><h2>ĐƠN HÀNG CỦA BẠN</h2></div>
+          <div class="checkout-items" id="checkout-items"></div>
+          <div class="checkout-totals">
+            <div><span>Tạm tính</span><strong id="checkout-subtotal">0₫</strong></div>
+            <div><span>Phí vận chuyển</span><strong id="checkout-shipping">0₫</strong></div>
+            <div class="checkout-grand-total"><span>Tổng thanh toán</span><strong id="checkout-total">0₫</strong></div>
+          </div>
+          <p class="checkout-shipping-hint">Miễn phí vận chuyển cho đơn hàng từ 2.000.000₫.</p>
+          <a class="continue-shopping" href="index.html#collections">← TIẾP TỤC XEM SẢN PHẨM</a>
+        </aside>
+      </div>
+      <section class="checkout-empty" id="checkout-empty" hidden>
+        <span>♧</span><h2>GIỎ HÀNG ĐANG TRỐNG</h2><p>Thêm một tạo tác AGON để bắt đầu thanh toán.</p>
+        <a class="hero-primary" href="index.html#collections">KHÁM PHÁ BỘ SƯU TẬP&nbsp; ↗</a>
+      </section>
+    </main>
+
+    <footer class="site-footer checkout-footer">
+      <div class="page-width footer-bottom"><span>© 2026 AGON STERLING ARCHITECTURE.</span><a href="index.html">AGON ARCHIVE</a></div>
+    </footer>
+  </body>
+</html>
